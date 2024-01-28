@@ -11,7 +11,12 @@ function getInputValue(inputTextValue) {
 function outputValues(shapeText, getArea, unit) {
 
     const resultTextArea = document.getElementById('result');
-    resultTextArea.innerText = "=> " + shapeText + getArea + unit;
+    const count = resultTextArea.childElementCount;
+    const p = document.createElement('p');
+    p.classList.add('my-4');
+    p.innerHTML = `${count + 1}. ${shapeText} ${getArea} ${unit} <button class="btn btn-sm btn-success">convert</button>`
+
+    resultTextArea.appendChild(p);
 
 }
 
@@ -91,5 +96,6 @@ function EllipseArea() {
         return;
     }
     const area = 3.1416 * a * b;
-    outputValues("Ellipse Area is : ", area, " cm²")
+    const areaTakeTwoPoint = area.toFixed(2);
+    outputValues("Ellipse Area is : ", areaTakeTwoPoint, " cm²")
 }
